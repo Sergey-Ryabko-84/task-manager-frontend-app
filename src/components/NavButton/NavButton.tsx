@@ -5,7 +5,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const NavButton: React.FC<IProps>= ({to, children}) => {
+const NavButton: React.FC<IProps> = ({ to, children }) => {
   return <Button to={to}>{children}</Button>;
 };
 

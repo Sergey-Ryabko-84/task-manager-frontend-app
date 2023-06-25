@@ -1,6 +1,7 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import LoginForm from "../modules/AuthForms/LoginForm";
 import { NavLink } from "react-router-dom";
+import StartPageContainer from "../components/StartPageContainer";
 import styled from "@emotion/styled";
 
 const Link = styled(NavLink)`
@@ -17,17 +18,7 @@ const Link = styled(NavLink)`
 
 const LoginPage: React.FC = () => {
   return (
-    <Container
-      maxWidth="xs"
-      sx={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        pb: 8,
-      }}
-    >
+    <StartPageContainer>
       <Typography
         variant="h1"
         sx={{ textAlign: "center", fontSize: 30, fontWeight: 600, mb: 2 }}
@@ -38,7 +29,7 @@ const LoginPage: React.FC = () => {
       <Typography variant="body1" sx={{}}>
         Don't have an account? <Link to={"/register"}>Register</Link>
       </Typography>
-    </Container>
+    </StartPageContainer>
   );
 };
 

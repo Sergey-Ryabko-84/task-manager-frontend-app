@@ -1,19 +1,10 @@
 import { Container, Typography } from "@mui/material";
+import StartPageContainer from "../components/StartPageContainer";
 import NavButton from "../components/NavButton/NavButton";
 
 const HomePage: React.FC = () => {
   return (
-    <Container
-      maxWidth="xs"
-      sx={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        pb: 8,
-      }}
-    >
+    <StartPageContainer>
       <Typography
         variant="h1"
         sx={{ textAlign: "center", fontSize: 24, fontWeight: 600, mb: 2 }}
@@ -33,7 +24,7 @@ const HomePage: React.FC = () => {
         <NavButton to="login">Log in</NavButton>
         <NavButton to="register">Register</NavButton>
       </Container>
-    </Container>
+    </StartPageContainer>
   );
 };
 
