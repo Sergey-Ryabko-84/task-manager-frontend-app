@@ -1,12 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
 
-const App:React.FC = () => {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>Task manager</h1>
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
