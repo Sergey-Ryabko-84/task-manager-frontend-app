@@ -21,8 +21,8 @@ const HomePage: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <NavButton to="login">Log in</NavButton>
-        <NavButton to="register">Register</NavButton>
+        <NavButton to="/login">Log in</NavButton>
+        <NavButton to="/register">Register</NavButton>
       </Container>
     </StartPageContainer>
   );
