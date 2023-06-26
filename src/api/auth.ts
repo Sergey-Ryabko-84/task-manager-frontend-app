@@ -5,7 +5,7 @@ export interface IAuthData {
   password: string;
 }
 
-const instance = axios.create({ baseURL: process.env.REACT_APP_API_URL });
+export const instance = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
 const setToken = (token: string) => {
   if (token) {

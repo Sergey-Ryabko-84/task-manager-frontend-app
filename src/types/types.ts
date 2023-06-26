@@ -1,3 +1,8 @@
+export interface IPropChildren {
+  children: React.ReactNode;
+}
+
+// Auth
 export interface IUser {
   id: number;
   email: string;
@@ -12,10 +17,21 @@ export interface IAuthState {
   error: string;
 }
 
-export interface IGlobalStore {
-  auth: IAuthState;
+// Categories
+
+interface ICategory {
+  id: number;
+  name: string;
+  userId: number;
+  createdAt: string;
 }
 
-export interface IPropChildren {
-  children: React.ReactNode;
+interface ICategoriesArr {
+  category: ICategory;
+}
+
+export interface ICategories {
+  categories: ICategoriesArr[];
+  isLoading: boolean;
+  error: string;
 }
