@@ -26,7 +26,9 @@ export const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user.id = payload.id;
+        state.user.email = payload.email;
+        state.user.roles = payload.roles;
         state.isLoggedIn = true;
         state.isLoading = false;
       })
@@ -45,16 +47,15 @@ export const authSlice = createSlice({
         isAnyOf(register.fulfilled, login.fulfilled),
         (state, { payload }) => {
           state.token = payload.token;
-          // state.isLoggedIn = true;
           state.isLoading = false;
         }
       )
       .addMatcher(
         isAnyOf(register.rejected, login.rejected, refreshUser.rejected),
-        // (state, action: PayloadAction<string>) => {
-        (state, action) => {
+        (state, action: PayloadAction<any>) => {
+          console.log(action);
           state.isLoading = false;
-          // state.error = action.payload;
+          state.error = action.payload;
         }
       ),
 });

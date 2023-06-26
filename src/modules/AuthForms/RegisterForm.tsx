@@ -76,7 +76,7 @@ const RegisterForm: React.FC = () => {
         variant="contained"
         type="submit"
         loading={isLoading}
-        loadingPosition="start"
+        // loadingPosition="start"
       >
         Register
       </LoadingButton>

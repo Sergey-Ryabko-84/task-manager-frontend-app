@@ -76,7 +76,7 @@ const LoginForm: React.FC = () => {
         variant="contained"
         type="submit"
         loading={isLoading}
-        loadingPosition="start"
+        // loadingPosition="start"
       >
         Log in
       </LoadingButton>
