@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../../api/categories";
 
 export const addCategory = createAsyncThunk(
-  "categories",
+  "add/categories",
   async (data: api.IAdd, { rejectWithValue }) => {
     try {
       const result = await api.addCategory(data);
@@ -14,7 +14,7 @@ export const addCategory = createAsyncThunk(
 );
 
 export const editCategory = createAsyncThunk(
-  "categories",
+  "edit/categories",
   async (data: api.IEdit, { rejectWithValue }) => {
     try {
       const result = await api.editCategory(data);
@@ -26,7 +26,7 @@ export const editCategory = createAsyncThunk(
 );
 
 export const deleteCategory = createAsyncThunk(
-  "categories",
+  "delete/categories",
   async (data: api.IDel, { rejectWithValue }) => {
     try {
       const result = await api.deleteCategory(data);
