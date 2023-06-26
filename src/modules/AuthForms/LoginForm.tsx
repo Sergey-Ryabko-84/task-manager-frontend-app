@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Login, Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { selectIsLoading } from "../../redux/auth/selectors";
@@ -76,7 +76,8 @@ const LoginForm: React.FC = () => {
         variant="contained"
         type="submit"
         loading={isLoading}
-        // loadingPosition="start"
+        loadingPosition="start"
+        startIcon={<Login />}
       >
         Log in
       </LoadingButton>
