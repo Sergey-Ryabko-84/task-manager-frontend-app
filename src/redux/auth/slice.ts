@@ -53,7 +53,6 @@ export const authSlice = createSlice({
       .addMatcher(
         isAnyOf(register.rejected, login.rejected, refreshUser.rejected),
         (state, action: PayloadAction<any>) => {
-          console.log(action);
           state.isLoading = false;
           state.error = action.payload;
         }
