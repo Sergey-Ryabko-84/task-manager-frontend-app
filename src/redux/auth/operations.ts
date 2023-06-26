@@ -5,8 +5,6 @@ import { IAuthState } from "../../types/types";
 export const register = createAsyncThunk(
   "auth/register",
     async (data: api.IAuthData, { rejectWithValue }) => {
-        console.log("auth/register");
-        console.log("data:", data);
     try {
       const result = await api.register(data);
       return result;
