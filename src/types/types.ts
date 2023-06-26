@@ -26,12 +26,8 @@ interface ICategory {
   createdAt: string;
 }
 
-interface ICategoriesArr {
-  category: ICategory;
-}
-
-export interface ICategories {
-  categories: ICategoriesArr[];
+export interface ICategoriesState {
+  categories: ICategory[];
   isLoading: boolean;
   error: string;
 }

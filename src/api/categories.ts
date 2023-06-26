@@ -9,6 +9,10 @@ export interface IEdit {
   id: number;
 }
 
+export interface IDel {
+  id: number;
+}
+
 export const addCategory = async (data: IAdd) => {
   const { data: result } = await instance.post("/categories", data);
   return result;

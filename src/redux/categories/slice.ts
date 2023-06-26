@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { ICategories } from "../../types/types";
+import { ICategoriesState } from "../../types/types";
 
-import {} from "./operations";
+import { addCategory, deleteCategory, editCategory } from "./operations";
 import { refreshUser } from "../auth/operations";
 
-const initialState: ICategories = {
+const initialState: ICategoriesState = {
   categories: [],
   isLoading: false,
   error: "",
@@ -19,15 +19,51 @@ export const categoriesSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.categories = payload.categories;
       })
-      .addMatcher(isAnyOf(refreshUser.pending), (state) => {
-        state.isLoading = true;
-        state.error = "";
+      .addCase(addCategory.fulfilled, (state, { payload }) => {
+        state.categories.push(payload);
       })
-      .addMatcher(isAnyOf(refreshUser.fulfilled), (state) => {
-        state.isLoading = false;
+      .addCase(editCategory.fulfilled, (state, { payload }) => {
+        const index = state.categories.findIndex(
+          (item) => item.id === payload.id
+        );
+        state.categories[index].name = payload.name;
+      })
+      .addCase(deleteCategory.fulfilled, (state, { payload }) => {
+        const newArr = state.categories.filter(
+          (item) => item.id !== payload.id
+        );
+        state.categories = newArr;
       })
       .addMatcher(
-        isAnyOf(refreshUser.rejected),
+        isAnyOf(
+          refreshUser.pending,
+          addCategory.pending,
+          editCategory.pending,
+          deleteCategory.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.error = "";
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          refreshUser.fulfilled,
+          addCategory.fulfilled,
+          editCategory.fulfilled,
+          deleteCategory.fulfilled
+        ),
+        (state) => {
+          state.isLoading = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          refreshUser.rejected,
+          addCategory.rejected,
+          editCategory.rejected,
+          deleteCategory.rejected
+        ),
         (state, action: PayloadAction<any>) => {
           state.isLoading = false;
           state.error = action.payload;
