@@ -1,10 +1,7 @@
 import { Container } from "@mui/material";
+import { IPropChildren } from "../types/types";
 
-interface IProps {
-  children: React.ReactNode;
-}
-
-const StartPageContainer: React.FC<IProps> = ({ children }) => {
+const StartPageContainer: React.FC<IPropChildren> = ({ children }) => {
   return (
     <Container
       maxWidth="xs"

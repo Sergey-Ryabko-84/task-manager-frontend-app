@@ -15,7 +15,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout(state) {
+    signout(state) {
       state.user = { id: 0, email: "", roles: [] };
       state.token = "";
       state.isLoggedIn = false;
@@ -59,4 +59,4 @@ export const authSlice = createSlice({
       ),
 });
 
-export const { logout } = authSlice.actions
+export const { signout } = authSlice.actions;
