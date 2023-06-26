@@ -3,15 +3,18 @@ import { useFormik } from "formik";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { selectIsLoading } from "../../redux/auth/selectors";
+import { refreshUser, register } from "../../redux/auth/operations";
 import { validationSchema } from "./validationSchema";
 import { initialValues } from "./initialValues";
 import fields from "./fields";
 import { Form } from "./Form.styled";
 
 const RegisterForm: React.FC = () => {
+  const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
+  
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
@@ -24,7 +27,10 @@ const RegisterForm: React.FC = () => {
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(register(values))
+        .unwrap()
+        .then(() => dispatch(refreshUser()))
+        .catch((error) => null);
     },
   });
 

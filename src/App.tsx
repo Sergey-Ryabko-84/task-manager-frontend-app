@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
+import AuthLayout from "./modules/AuthLayout";
 import { GlobalStyle } from "./style/GlobalStyle";
 
 const App: React.FC = () => {
@@ -8,7 +9,9 @@ const App: React.FC = () => {
     <>
       <GlobalStyle />
       <BrowserRouter>
-        <AppRoutes />
+        <AuthLayout>
+          <AppRoutes />
+        </AuthLayout>
       </BrowserRouter>
     </>
   );

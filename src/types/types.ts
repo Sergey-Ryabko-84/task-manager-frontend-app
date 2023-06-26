@@ -15,3 +15,7 @@ export interface IAuthState {
 export interface IGlobalStore {
   auth: IAuthState;
 }
+
+export interface IPropChildren {
+  children: React.ReactNode;
+}

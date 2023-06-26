@@ -18,6 +18,7 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "axios": "^1.4.0",
     "formik": "^2.4.2",
     "modern-normalize": "^2.0.0",
     "react": "^17.0.0 || ^18.0.0",
