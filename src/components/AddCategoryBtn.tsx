@@ -6,14 +6,14 @@ const AddCategoryBtn: React.FC = () => {
 
   return (
     <Button
-      sx={{ width: 160, fontSize: 12 }}
+      sx={{ width: 170, fontSize: 12 }}
       size="large"
       color="info"
       variant="contained"
       type="button"
       onClick={() => setIsModalOn((state) => !state)}
     >
-      Add category
+      Add category{isModalOn}
     </Button>
   );
 };
