@@ -1,4 +1,4 @@
-import { Button, Card, CardContent } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import DeleteCategoryBtn from "../../components/DeleteCategoryBtn";
 import { ICategory } from "../../types/types";
 import EditCategoryBtn from "./EditCategoryBtn";

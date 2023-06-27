@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import { Box, Button, Modal, TextField } from "@mui/material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -44,6 +44,7 @@ const EditCategoryBtn: React.FC<ICategory> = (item) => {
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Form onSubmit={formik.handleSubmit}>
+          <Typography>{`Edit ${item.name} category`}</Typography>
           <TextField
             margin="normal"
             fullWidth
