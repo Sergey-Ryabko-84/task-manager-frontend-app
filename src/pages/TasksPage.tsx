@@ -3,6 +3,7 @@ import { Container, Typography } from "@mui/material";
 import AppPanel from "../modules/AppPanel";
 import LogOut from "../components/LogOut";
 import TaskList from "../modules/Tasks/TaskList";
+import AddTaskBtn from "../modules/Tasks/AddTaskBtn";
 
 const TasksPage: React.FC = () => {
   const location = useLocation();
@@ -11,10 +12,15 @@ const TasksPage: React.FC = () => {
   return (
     <Container maxWidth="xl">
       <AppPanel>
-        <Typography>{category.name}</Typography>
+        <AddTaskBtn {...category} />
+        <Typography
+          sx={{ display: "inline-block", width: "90%", textAlign: "end" }}
+        >
+          {category.name}
+        </Typography>
         <LogOut />
       </AppPanel>
-      <TaskList {...location.state} />
+      <TaskList {...category} />
     </Container>
   );
 };

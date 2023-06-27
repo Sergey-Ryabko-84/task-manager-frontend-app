@@ -17,8 +17,6 @@ const CategoryItem: React.FC<ICategory> = (item) => {
 
   const ownTasks = tasks.filter(task => task.categoryId === item.id)
 
-  console.log("ownTasks:", ownTasks);
-
   return (
     <Grid item xs={12}>
       <Card sx={{ bgcolor: "#b3e5fc", px: 2 }}>
