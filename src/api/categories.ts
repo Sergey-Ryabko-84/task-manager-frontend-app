@@ -23,3 +23,8 @@ export const deleteCategory = async (data: number) => {
   const { data: result } = await instance.delete(`/categories/${data}`);
   return result;
 };
+
+export const addCategoryById = async (data: number) => {
+  const { data: result } = await instance.get(`/categories/${data}`);
+  return result;
+};

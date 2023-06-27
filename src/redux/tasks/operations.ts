@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../../api/tasks";
+import { addCategoryById } from "../../api/categories";
 
 export const addTask = createAsyncThunk(
   "add/task",
@@ -13,7 +14,7 @@ export const addTask = createAsyncThunk(
   }
 );
 
-export const editTasky = createAsyncThunk(
+export const editTask = createAsyncThunk(
   "edit/task",
   async (data: api.IEdit, { rejectWithValue }) => {
     try {
@@ -37,3 +38,14 @@ export const deleteTask = createAsyncThunk(
   }
 );
 
+export const getTasks = createAsyncThunk(
+  "get/tasks",
+  async (data: number, { rejectWithValue }) => {
+    try {
+      const result = await addCategoryById(data);
+      return result.tasks;
+    } catch (err: any) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
