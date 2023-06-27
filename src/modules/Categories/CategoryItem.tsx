@@ -11,12 +11,16 @@ const CategoryItem: React.FC<ICategory> = (item) => {
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",
+            gap: "12vw",
+            flexWrap: "wrap",
             pt: "24px",
           }}
         >
-          <Typography>{item.name}</Typography>
+          <Typography sx={{ flexGrow: 1 }}>{item.name}</Typography>
           <Typography>{item.id}</Typography>
-          <Typography>{item.createdAt.slice(0, 10).split("-").reverse().join(".")}</Typography>
+          <Typography>
+            {item.createdAt.slice(0, 10).split("-").reverse().join(".")}
+          </Typography>
           <Button size="small">actions</Button>
           <Button size="small">more</Button>
         </CardContent>
