@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import { Box, Button, Modal, TextField } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Edit } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { addCategory } from "../../redux/categories/operations";
+import { editCategory } from "../../redux/categories/operations";
 import { selectIsLoading } from "../../redux/categories/selectors";
 import { validationSchema } from "./validationSchema";
 import fields from "./fields";
 import { Form } from "./Form.styled";
+import { ICategory } from "../../types/types";
 
-const AddCategoryBtn: React.FC = () => {
+const EditCategoryBtn: React.FC<ICategory> = (item) => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
 
@@ -19,10 +20,10 @@ const AddCategoryBtn: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   const formik = useFormik({
-    initialValues: { name: "" },
+    initialValues: { name: item.name },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      dispatch(addCategory(values))
+      dispatch(editCategory({ ...values, id: item.id }))
         .unwrap()
         .then(() => {
           formik.resetForm();
@@ -35,14 +36,11 @@ const AddCategoryBtn: React.FC = () => {
   return (
     <>
       <Button
-        sx={{ width: 170, fontSize: 12 }}
-        size="large"
-        color="info"
-        variant="contained"
+        sx={{ display: "flex", justifyContent: "start" }}
         type="button"
         onClick={handleOpen}
       >
-        Add category
+        Edit
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Form onSubmit={formik.handleSubmit}>
@@ -79,9 +77,9 @@ const AddCategoryBtn: React.FC = () => {
               type="submit"
               loading={isLoading}
               loadingPosition="start"
-              startIcon={<Add />}
+              startIcon={<Edit />}
             >
-              Add
+              Save
             </LoadingButton>
           </Box>
         </Form>
@@ -90,4 +88,4 @@ const AddCategoryBtn: React.FC = () => {
   );
 };
 
-export default AddCategoryBtn;
+export default EditCategoryBtn;

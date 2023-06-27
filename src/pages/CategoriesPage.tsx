@@ -11,7 +11,7 @@ const CategoriesPage: React.FC = () => {
         <AddCategoryBtn />
         <LogOut />
       </AppPanel>
-      <CategoryList/>
+      <CategoryList />
     </Container>
   );
 };

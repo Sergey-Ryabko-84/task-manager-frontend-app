@@ -1,6 +1,7 @@
 import { Button, Card, CardContent } from "@mui/material";
 import DeleteCategoryBtn from "../../components/DeleteCategoryBtn";
 import { ICategory } from "../../types/types";
+import EditCategoryBtn from "./EditCategoryBtn";
 
 const CategoryActions: React.FC<ICategory> = (item) => {
   return (
@@ -11,7 +12,7 @@ const CategoryActions: React.FC<ICategory> = (item) => {
           flexDirection: "column",
         }}
       >
-        <Button sx={{ display: "flex", justifyContent: "start" }}>Edit</Button>
+        <EditCategoryBtn {...item} />
         <DeleteCategoryBtn {...item} />
       </CardContent>
     </Card>
