@@ -1,6 +1,38 @@
-# Getting Started with Create React App
+## Task manager frontend app 0.0.1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## React App - Task Manager
+
+This is a frontend application built using React that provides a user-friendly interface for managing tasks. The app fulfills the following requirements:
+
+## Login and Registration
+
+- Upon visiting the site, users are automatically redirected to the registration or login page.
+- User authentication is implemented using JSON Web Tokens (JWT) stored in the local storage.
+- After successful registration or login, users are redirected to the task manager.
+
+## Component Libraries
+
+The app utilizes Material UI, Yup, and Formik libraries for building components, providing a sleek and intuitive user interface.
+
+## Categories
+
+- Once authenticated and redirected to the categories page, users can create categories for organizing their tasks.
+- Clicking the "More" button allows users to view a list of tasks within a specific category.
+- The "Actions" button provides options to delete a category, mark it as complete, or edit its name.
+- Users can create a new category by clicking the "Add Category" button and providing a name. The timestamp is automatically recorded in the database.
+
+## Tasks
+
+- Clicking the "Add Task" button redirects users to the task creation page.
+- Upon entering all the required fields (name being mandatory), users are redirected to the task list, where the updated list displays the newly created task at the top.
+- Clicking the "Delete" button prompts users with a popup to confirm the deletion of a task or cancel the operation.
+- Clicking the "Edit Task" button redirects users to the task editing page. After making the necessary changes, users are redirected back to the task list.
+
+These requirements have been successfully implemented in the React app, providing users with a seamless experience for managing tasks and categories.
+
+
+## P.S.
+To run the project locally, please use the .env.example file. It contains the necessary environment variable data required for project execution.
 
 ## Available Scripts
 
