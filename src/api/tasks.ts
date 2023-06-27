@@ -14,21 +14,17 @@ export interface IEdit {
   dateEnd: string;
 }
 
-export interface IDel {
-  id: number;
-}
-
 export const addTask = async (data: IAdd) => {
   const { data: result } = await instance.post("/tasks", data);
   return result;
 };
 
-export const editCategory = async (data: IEdit) => {
+export const editTasky = async (data: IEdit) => {
   const { data: result } = await instance.patch("/tasks", data);
   return result;
 };
 
-export const deleteCategory = async (data: number) => {
+export const deleteTask = async (data: number) => {
   const { data: result } = await instance.delete(`/tasks/${data}`);
   return result;
 };

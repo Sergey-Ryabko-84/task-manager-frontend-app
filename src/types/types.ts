@@ -31,3 +31,19 @@ export interface ICategoriesState {
   isLoading: boolean;
   error: string;
 }
+
+// Tasks
+
+export interface ITask {
+  id: number;
+  name: string;
+  dateStart: string;
+  dateEnd: string;
+  categoryId: number;
+}
+
+export interface ITasksState {
+  tasks: ITask[];
+  isLoading: boolean;
+  error: string;
+}
