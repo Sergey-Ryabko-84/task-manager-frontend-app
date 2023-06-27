@@ -27,7 +27,7 @@ export const editCategory = createAsyncThunk(
 
 export const deleteCategory = createAsyncThunk(
   "delete/categories",
-  async (data: api.IDel, { rejectWithValue }) => {
+  async (data: number, { rejectWithValue }) => {
     try {
       const result = await api.deleteCategory(data);
       return result;

@@ -23,7 +23,7 @@ export const editCategory = async (data: IEdit) => {
   return result;
 };
 
-export const deleteCategory = async (data: any) => {
-  const { data: result } = await instance.delete("/categories", data);
+export const deleteCategory = async (data: number) => {
+  const { data: result } = await instance.delete(`/categories/${data}`);
   return result;
 };

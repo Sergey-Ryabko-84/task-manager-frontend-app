@@ -1,10 +1,13 @@
-import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { ICategory } from "../../types/types";
+import CategoryActionsBtn from "../../components/CategoryActionsBtn";
+import { Link } from "./NavLink.styled";
+
 
 const CategoryItem: React.FC<ICategory> = (item) => {
   return (
     <Grid item xs={12}>
-      <Card sx={{ bgcolor: "#b3e5fc" }}>
+      <Card sx={{ bgcolor: "#b3e5fc", px: 2 }}>
         <CardContent
           sx={{
             display: "flex",
@@ -21,8 +24,8 @@ const CategoryItem: React.FC<ICategory> = (item) => {
           <Typography>
             {item.createdAt.slice(0, 10).split("-").reverse().join(".")}
           </Typography>
-          <Button size="small">actions</Button>
-          <Button size="small">more</Button>
+          <CategoryActionsBtn {...item}/>
+          <Link to={item.id.toString()}>more</Link>
         </CardContent>
       </Card>
     </Grid>

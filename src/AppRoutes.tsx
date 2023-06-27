@@ -22,7 +22,7 @@ const AppRoutes: React.FC = () => {
           </Route>
           <Route element={<PrivateRoute redirectTo="login" />}>
             <Route path="categories" element={<CategoriesPage />} />
-            <Route path="tasks" element={<TasksPage />} />
+            <Route path="categories/:id" element={<TasksPage />} />
           </Route>
           <Route path="*" element={<HomePage />} />
         </Route>

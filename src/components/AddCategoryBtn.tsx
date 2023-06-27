@@ -20,7 +20,9 @@ const AddCategoryBtn: React.FC = () => {
         Add category
       </Button>
       <Modal open={open} onClose={handleClose}>
-        <AddCategoryForm />
+        <>
+          <AddCategoryForm />
+        </>
       </Modal>
     </>
   );
