@@ -22,6 +22,17 @@ export const tasksSlice = createSlice({
             state.tasks.push(item);
         });
       })
+      .addCase(addTask.fulfilled, (state, { payload }) => {
+        state.tasks.push(payload);
+      })
+      .addCase(editTask.fulfilled, (state, { payload }) => {
+        const index = state.tasks.findIndex((item) => item.id === payload.id);
+        state.tasks[index] = payload;
+      })
+      .addCase(deleteTask.fulfilled, (state, { payload }) => {
+        const newArr = state.tasks.filter((item) => item.id !== payload.id);
+        state.tasks = newArr;
+      })
       .addMatcher(
         isAnyOf(
           getTasks.pending,
