@@ -8,7 +8,7 @@ const TaskItem: React.FC<ITask> = (item) => {
       <Card sx={{ bgcolor: "#b3e5fc", px: 2 }}>
         <CardContent
           sx={{
-            width: "200px",
+            width: "220px",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",

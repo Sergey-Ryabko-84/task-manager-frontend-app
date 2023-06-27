@@ -1,9 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Container, Typography } from "@mui/material";
 import AppPanel from "../modules/AppPanel";
 import LogOut from "../components/LogOut";
 import TaskList from "../modules/Tasks/TaskList";
 import AddTaskBtn from "../modules/Tasks/AddTaskBtn";
+import { ArrowBack } from "@mui/icons-material";
 
 const TasksPage: React.FC = () => {
   const location = useLocation();
@@ -12,9 +13,10 @@ const TasksPage: React.FC = () => {
   return (
     <Container maxWidth="xl">
       <AppPanel>
+        <NavLink to="/categories"><ArrowBack sx={{mr: 3}}/></NavLink>
         <AddTaskBtn {...category} />
         <Typography
-          sx={{ display: "inline-block", width: "90%", textAlign: "end" }}
+          sx={{ display: "inline-block", width: "85%", textAlign: "end" }}
         >
           {category.name}
         </Typography>
