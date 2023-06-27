@@ -6,7 +6,6 @@ import { getTasks } from "../../redux/tasks/operations";
 import { ICategory, ITask } from "../../types/types";
 import TaskItem from "./TaskItem";
 
-
 const CategoryList: React.FC<ICategory> = (category) => {
   const dispatch = useAppDispatch();
   const tasks = useAppSelector(selectTasks);
@@ -18,10 +17,12 @@ const CategoryList: React.FC<ICategory> = (category) => {
     setOwnTasks(tasksArr);
   }, [dispatch, tasks, category.id]);
 
-  console.log("ownTasks:", ownTasks);
-
   return (
-    <Grid container spacing={2} sx={{ display: "flex", justifyContent: 'center', mt: 8 }}>
+    <Grid
+      container
+      spacing={2}
+      sx={{ display: "flex", justifyContent: "center", mt: 8 }}
+    >
       {ownTasks.length > 0 &&
         ownTasks.map((item: ITask) => <TaskItem key={item.id} {...item} />)}
     </Grid>
