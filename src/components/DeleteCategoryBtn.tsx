@@ -15,12 +15,10 @@ const DeleteCategoryBtn: React.FC<ICategory> = (item) => {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(false);
   const handleDelete = () => {
-    console.log("item.id:", item.id);
-    console.log(typeof item.id);
-        dispatch(deleteCategory(item.id));
-    }
+    dispatch(deleteCategory(item.id));
+  };
 
   return (
     <>
