@@ -23,7 +23,7 @@ const DeleteTaskBtn: React.FC<ITask> = (item) => {
   return (
     <>
       <Button
-        sx={{ display: "flex", justifyContent: "start" }}
+        fullWidth
         variant="contained"
         onClick={handleOpen}
       >

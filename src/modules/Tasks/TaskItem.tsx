@@ -2,6 +2,7 @@
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import { ITask } from "../../types/types";
 import DeleteTaskBtn from "../../components/DeleteTaskBtn";
+import EditTaskBtn from "./EditTaskBtn";
 
 const TaskItem: React.FC<ITask> = (item) => {
   return (
@@ -31,7 +32,8 @@ const TaskItem: React.FC<ITask> = (item) => {
               .reverse()
               .join(".")}`}</Typography>
           </Box>
-          <Box>
+          <Box sx={{display: "flex", justifyContent: "center", gap: 1}}>
+            <EditTaskBtn {...item} />
             <DeleteTaskBtn {...item} />
           </Box>
         </CardContent>

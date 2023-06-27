@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import { Box, Button, Modal, TextField } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { Edit } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { addTask } from "../../redux/tasks/operations";
+import { editTask } from "../../redux/tasks/operations";
 import { selectIsLoading } from "../../redux/categories/selectors";
 import { validationSchema } from "./validationSchema";
 import fields from "./fields";
 import { Form } from "./Form.styled";
-import { ICategory } from "../../types/types";
+import { ITask } from "../../types/types";
 
-const AddTaskBtn: React.FC<ICategory> = (category) => {
+const EditTaskBtn: React.FC<ITask> = (item) => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
 
@@ -20,18 +20,22 @@ const AddTaskBtn: React.FC<ICategory> = (category) => {
   const handleClose = () => setOpen(false);
 
   const formik = useFormik({
-    initialValues: { name: "", dateStart: Date.now, dateEnd: Date.now },
+    initialValues: {
+      name: item.name,
+      dateStart: item.dateStart,
+      dateEnd: item.dateEnd,
+    },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       if (values.dateStart > values.dateEnd) {
         return alert("the end date can`t be less than the start date");
       }
       dispatch(
-        addTask({
+        editTask({
+          id: item.id,
           name: values.name,
           dateStart: values.dateStart.toString(),
           dateEnd: values.dateEnd.toString(),
-          categoryId: category.id,
         })
       )
         .unwrap()
@@ -46,17 +50,16 @@ const AddTaskBtn: React.FC<ICategory> = (category) => {
   return (
     <>
       <Button
-        sx={{ width: 200, fontSize: 12 }}
-        size="large"
-        color="info"
+        fullWidth
         variant="contained"
         type="button"
         onClick={handleOpen}
       >
-        Add task
+        Edit
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Form onSubmit={formik.handleSubmit}>
+          <Typography>Edit task</Typography>
           <TextField
             margin="normal"
             fullWidth
@@ -112,9 +115,9 @@ const AddTaskBtn: React.FC<ICategory> = (category) => {
               type="submit"
               loading={isLoading}
               loadingPosition="start"
-              startIcon={<Add />}
+              startIcon={<Edit />}
             >
-              Add
+              Save
             </LoadingButton>
           </Box>
         </Form>
@@ -123,4 +126,4 @@ const AddTaskBtn: React.FC<ICategory> = (category) => {
   );
 };
 
-export default AddTaskBtn;
+export default EditTaskBtn;
