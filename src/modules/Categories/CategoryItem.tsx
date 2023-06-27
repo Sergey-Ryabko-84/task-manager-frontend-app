@@ -17,6 +17,8 @@ const CategoryItem: React.FC<ICategory> = (item) => {
 
   const ownTasks = tasks.filter(task => task.categoryId === item.id)
 
+  console.log("ownTasks:", ownTasks);
+
   return (
     <Grid item xs={12}>
       <Card sx={{ bgcolor: "#b3e5fc", px: 2 }}>
@@ -37,7 +39,12 @@ const CategoryItem: React.FC<ICategory> = (item) => {
             {item.createdAt.slice(0, 10).split("-").reverse().join(".")}
           </Typography>
           <CategoryActionsBtn {...item} />
-          <Link to={item.id.toString()}>more</Link>
+          <Link
+            to={item.id.toString()}
+            state={{ category: item, tasks: ownTasks }}
+          >
+            more
+          </Link>
         </CardContent>
       </Card>
     </Grid>
