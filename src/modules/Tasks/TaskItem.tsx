@@ -1,6 +1,7 @@
 // import { useEffect } from "react";
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import { ITask } from "../../types/types";
+import DeleteTaskBtn from "../../components/DeleteTaskBtn";
 
 const TaskItem: React.FC<ITask> = (item) => {
   return (
@@ -17,7 +18,7 @@ const TaskItem: React.FC<ITask> = (item) => {
             pt: "24px",
           }}
         >
-          <Box>
+          <Box sx={{ mb: 2 }}>
             <Typography sx={{ mb: 1 }}>{item.name}</Typography>
             <Typography>{`start date: ${item.dateStart
               .slice(0, 10)
@@ -29,6 +30,9 @@ const TaskItem: React.FC<ITask> = (item) => {
               .split("-")
               .reverse()
               .join(".")}`}</Typography>
+          </Box>
+          <Box>
+            <DeleteTaskBtn {...item} />
           </Box>
         </CardContent>
       </Card>
